@@ -96,6 +96,11 @@ const AgregarPost = () => {
     }
   };
 
+  const insertCodeBlock = () => {
+    const codeBlock = `<div style="background-color: #f5f5f5; padding: 10px; border-radius: 5px;"><code>Escribe tu código aquí...</code></div><br><br>`;
+    document.execCommand('insertHTML', false, codeBlock);
+  };
+
   const handleInputChange = () => {
     if (editorRef.current) {
       setContent(editorRef.current.innerHTML); // Usar innerHTML para mantener el formato
@@ -168,6 +173,21 @@ const AgregarPost = () => {
 
   const handleEdit = (post) => {
     setEditingPost(post);
+  };
+
+  // Función para aplicar encabezado
+  const applyHeader = (level) => {
+    document.execCommand('formatBlock', false, `<h${level}>`);
+  };
+
+  // Función para crear lista ordenada
+  const insertOrderedList = () => {
+    document.execCommand('insertOrderedList', false, null);
+  };
+
+  // Función para crear lista desordenada
+  const insertUnorderedList = () => {
+    document.execCommand('insertUnorderedList', false, null);
   };
 
   return (
@@ -259,9 +279,30 @@ const AgregarPost = () => {
                 <button
                   type="button"
                   className="btn btn-light me-2"
-                  onClick={() => applyStyle("justifyFull")}
+                  onClick={() => applyHeader(1)} // Aplicar H1
                 >
-                  Justificar
+                  H1
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-light me-2"
+                  onClick={() => applyHeader(2)} // Aplicar H2
+                >
+                  H2
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-light me-2"
+                  onClick={insertOrderedList} // Lista ordenada
+                >
+                  Lista ordenada
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-light me-2"
+                  onClick={insertUnorderedList} // Lista desordenada
+                >
+                  Lista desordenada
                 </button>
                 <button
                   type="button"
@@ -270,107 +311,81 @@ const AgregarPost = () => {
                 >
                   Enlace
                 </button>
-              </div>
-
-              <div className="mb-2">
                 <button
                   type="button"
                   className="btn btn-light me-2"
-                  onClick={() => insertElement('h1', {}, 'Encabezado 1')}
+                  onClick={insertCodeBlock}
                 >
-                  H1
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-light me-2"
-                  onClick={() => insertElement('h2', {}, 'Encabezado 2')}
-                >
-                  H2
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-light me-2"
-                  onClick={() => insertElement('h3', {}, 'Encabezado 3')}
-                >
-                  H3
+                  Código
                 </button>
               </div>
-
-              <div className="mb-2">
-                <button
-                  type="button"
-                  className="btn btn-light me-2"
-                  onClick={() => insertElement('ul', {}, '<li>Elemento de lista</li>')}
+              <input
+                type="file"
+                className="form-control mb-2"
+                onChange={handleFileChange}
+              />
+              <button
+                type="button"
+                className="btn btn-primary w-100"
+                onClick={handleUpload}
+              >
+                Subir archivo
+              </button>
+              <div className="progress mt-2">
+                <div
+                  className="progress-bar"
+                  role="progressbar"
+                  style={{ width: `${progress}%` }}
+                  aria-valuenow={progress}
+                  aria-valuemin="0"
+                  aria-valuemax="100"
                 >
-                  Lista No Ordenada
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-light me-2"
-                  onClick={() => insertElement('ol', {}, '<li>Elemento de lista</li>')}
-                >
-                  Lista Ordenada
-                </button>
+                  {progress}%
+                </div>
               </div>
-
-              <div className="mb-2">
-                <input
-                  type="file"
-                  className="form-control mb-2"
-                  onChange={handleFileChange}
-                />
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={handleUpload}
-                >
-                  Subir Archivo
-                </button>
-                {progress > 0 && <div>Progreso: {progress}%</div>}
-              </div>
+              {/* Mostrar la imagen subida */}
+              {mediaUrl && (
+                <div className="mt-2">
+                  <img
+                    src={mediaUrl}
+                    alt="Archivo subido"
+                    style={{ width: '100%', maxHeight: '200px', objectFit: 'contain' }}
+                  />
+                </div>
+              )}
             </div>
-
             {/* Mitad inferior de la segunda columna */}
-            <div className="border border-3 p-2 mt-2 flex-grow-1" style={{ borderColor: '#ced4da' }}>
-              <h4>Posts Publicados</h4>
-              <table className="table table-bordered">
+            <div className="overflow-auto border border-3 p-2" style={{ borderColor: '#ced4da', height: '40%' }}>
+              <h5>Mis Posts</h5>
+              <table className="table table-hover">
                 <thead>
                   <tr>
                     <th>Título</th>
-                    <th>Autor</th>
-                    <th>Fecha</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {posts.length > 0 ? (
-                    posts.map((post) => (
-                      <tr key={post.id}>
-                        <td>{post.title}</td>
-                        <td>{post.author}</td>
-                        <td>{new Date(post.createdAt.toDate()).toLocaleDateString()}</td>
-                        <td>
-                          <button
-                            className="btn btn-warning"
-                            onClick={() => handleEdit(post)}
-                          >
-                            Editar
-                          </button>
-                        </td>
-                      </tr>
-                    ))
-                  ) : (
-                    <tr>
-                      <td colSpan="4">No hay posts para mostrar</td>
+                  {posts.map((post) => (
+                    <tr key={post.id}>
+                      <td>{post.title}</td>
+                      <td>
+                        <button
+                          type="button"
+                          className="btn btn-warning btn-sm me-2"
+                          onClick={() => handleEdit(post)}
+                        >
+                          Editar
+                        </button>
+                      </td>
                     </tr>
-                  )}
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
         <button type="submit" className="btn btn-primary mt-3">
-          {editingPost ? 'Actualizar' : 'Publicar'}
+          {editingPost ? 'Actualizar Post' : 'Publicar Post'}
         </button>
       </form>
     </div>
