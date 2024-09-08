@@ -11,3 +11,127 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*{
+  padding: 0;
+  margin: 0;
+  
+}
+/*NabBar Styles*/ 
+.nav-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 10px; 
+  background-color: transparent;
+  position: relative;   
+  border-bottom: 3px solid #151859;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-icons a{
+  text-decoration: none;
+  color: black;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #151859; 
+  width: 70px; 
+  height: 70px; 
+  border-radius: 40px; 
+  transition: all 0.3s ease;
+  overflow: hidden; 
+  position: static;    
+}
+
+.icon-container img {
+  width: 50px; 
+  height: 50px; 
+  transition: transform 0.3s ease; 
+}
+
+.icon-text {
+  display: none; /* Hide text initially */
+  font-size: 14px; 
+  /*white-space: nowrap; */
+  margin-left: 10px; /* Space between icon and text */
+  opacity: 0; 
+  transition: opacity 0.3s ease; 
+}
+
+.icon-container:hover {
+  width: auto; /* Allow the container to resize to fit the text */
+  padding-left: 10px; /* Add padding to fit the text */
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-radius: 25px; /* Change to a pill shape on hover */
+  border: 4px solid #F93901;
+}
+
+.icon-container:hover .icon-text {
+  display: inline-block; /* Show text on hover */
+  opacity: 1; /* Show text on hover */
+}
+
+.icon-container:hover img {
+  transform: translateX(-10px); /* Move icon slightly left to make space for text */
+}
+
+.active-nav {
+  border: 6px solid #F93901;
+  border-radius: 40px;
+}
+/*NavBar Styles End*/
+
+/* footer */
+.main-footer {
+  background-color: #0652e9;
+  color: white;
+  font-size: 13px;
+  border: 6px solid #b2c663;
+}
+
+.footer-logo img{
+  height: 125px;
+  width: auto;
+}
+
+.footer-paginas ul, .footer-servicios ul {
+  list-style-type: none; /* Elimina los puntos de las listas */
+  padding: 0; /* Elimina el padding por defecto */
+  margin: 0; /* Elimina el margin por defecto */
+}
+
+.footer-paginas li, .footer-servicios li {
+  margin: 0; /* Elimina el margin de los elementos li */
+  text-align: left;
+}
+
+.footer-paginas a, .footer-servicios a {
+  text-decoration: none; /* Opcional: elimina el subrayado de los enlaces */
+  color: inherit; /* Opcional: hereda el color del texto del contenedor */
+}
+
+.redes-iconos img{
+  height: 45px;
+  width: auto;
+}
+
+.footer-contacto a{
+  text-decoration: none;
+  color: white;
+}
+
+.footer-contacto {
+  text-align: center;
+}
+/*Fin Footer*/

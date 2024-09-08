@@ -7,6 +7,8 @@ import PostsMain from '../PostsMain';
 import AgregarPost from '../AgregarPost';
 import Login from '../Login';
 import { EditarPost } from '../EditarPost';
+import { NavBar } from '../NavBar';
+import { Footer } from '../Footer';
 
 const PrivateRoute = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -29,6 +31,7 @@ const PrivateRoute = ({ children }) => {
 export const Rutas = () => {
   return (
     <Router>
+      <NavBar />
       <Routes>
         <Route path='/' element={<Navigate to="/postmain" />} />
         <Route path='/postmain' element={<PostsMain />} />
@@ -39,6 +42,7 @@ export const Rutas = () => {
         {/* Ruta de login */}
         <Route path='/login' element={<Login />} />
       </Routes>
+      <Footer/>
     </Router>
   );
 };
