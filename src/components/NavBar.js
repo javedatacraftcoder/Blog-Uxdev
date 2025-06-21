@@ -51,6 +51,14 @@ export const NavBar = () => {
             </NavLink>
           </div>
           <div className="nav-icons">
+            <ExternalLink to="https://foro.uxdevschool.com" className={({ isActive }) => isActive ? "active-nav" : ""}>
+              <div className="icon-container">
+                <img src="/assets/question-circle-svgrepo-com.svg" alt="Login icon" className="icon"/>
+                <span className="icon-text">Foro</span>
+              </div>
+            </ExternalLink>
+            </div>
+          <div className="nav-icons">
             <NavLink to="/login" className={({ isActive }) => isActive ? "active-nav" : ""}>
               <div className="icon-container">
                 <img src="/assets/login-svgrepo-com.svg" alt="Login icon" className="icon"/>

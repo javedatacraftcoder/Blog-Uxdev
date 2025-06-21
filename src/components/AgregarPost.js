@@ -219,13 +219,13 @@ const AgregarPost = () => {
               />
             </div>
             <div
-              ref={editorRef}
-              contentEditable="true"
-              className="form-control border-3 flex-grow-1 p-3"
-              style={{ overflowY: 'auto', borderColor: '#ced4da' }}
-              onInput={handleInputChange}
-              placeholder="Escribe tu post aquí..."
-            />
+  ref={editorRef}
+  contentEditable="true"
+  className="form-control border-3 flex-grow-1 p-3"
+  style={{ overflowY: 'auto', borderColor: '#ced4da', maxHeight: '500px' }} // Añadir maxHeight
+  onInput={handleInputChange}
+  placeholder="Escribe tu post aquí..."
+/>
           </div>
 
           {/* Segunda mitad de la pantalla */}

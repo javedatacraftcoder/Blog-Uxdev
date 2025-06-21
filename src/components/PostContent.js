@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc, collection, addDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { db } from './firestore';
+import { Helmet } from 'react-helmet';
 
 const PostContent = () => {
   const { id } = useParams();
@@ -74,8 +75,18 @@ const PostContent = () => {
 
   return (
     <div className="container mt-4 border p-4">
+      <Helmet>      
+        <title>{post.title}</title>
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.content.substring(0, 160)} />
+        <meta property="og:image" content={post.mediaUrl} />
+        <meta property="og:url" content={`https://UXDevSchool.com/post/${id}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="UXDev School" />
+        <meta property="og:locale" content="es_ES"/>
+      </Helmet>      
       {post.mediaUrl && (
-        <img src={post.mediaUrl} alt={post.title} className="img-fluid mb-3" />
+        <img src={post.mediaUrl} alt={post.title} className="img-fluid mb-3 center-image" />
       )}
       <h2>{post.title}</h2>
       <p><strong>Autor:</strong> {post.author}</p>
@@ -116,3 +127,6 @@ const PostContent = () => {
 };
 
 export default PostContent;
+
+
+
