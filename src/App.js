@@ -3,7 +3,9 @@ import { Rutas } from './components/Router/Rutas';
 
 function App() {
   return (
-    <Rutas/>
+   <div style={{ backgroundColor: 'white', minHeight: '100vh' }}>
+      <Rutas />
+    </div>
   );
 }
 
