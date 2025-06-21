@@ -31,7 +31,7 @@ const PostsMain = () => {
         <meta property="og:description" content="Transforma tu conocimiento con UXDev School. Cursos diseñados para principiantes en diseño UX, diseño web y marketing digital, ofreciendo una experiencia educativa envolvente que te capacita para aplicar lo aprendido en tu negocio o emprendimiento."/>
         <meta property="og:image" content="https://uxdevschool.com/uxdevschoologt.png"/>
       </Helmet>
-      <h2>Posts</h2>
+      <h2>Posts1</h2>
       <table className="table table-bordered">
         <thead>
           <tr>
