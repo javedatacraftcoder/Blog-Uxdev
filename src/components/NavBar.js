@@ -19,7 +19,7 @@ export const NavBar = () => {
       <nav className="nav-container">
         <div className="nav-main">
           <div className="nav-icons">
-            <ExternalLink to="https://www.uxdevschool.com" className={({ isActive }) => isActive ? "active-nav" : ""}>
+            <ExternalLink to="https://uxdevschool.datacraftcoders.com/landingpage" className={({ isActive }) => isActive ? "active-nav" : ""}>
               <div className="icon-container">
                 <img src="/assets/home-svgrepo-com.svg" alt="Home icon" className="icon"/>
                 <span className="icon-text">Inicio</span>
@@ -27,7 +27,7 @@ export const NavBar = () => {
             </ExternalLink>
           </div>
           <div className="nav-icons">
-            <ExternalLink to="https://uxdevschool.com/cursolanding" className={({ isActive }) => isActive ? "active-nav" : ""}>
+            <ExternalLink to="https://uxdevschool.datacraftcoders.com/cursolanding" className={({ isActive }) => isActive ? "active-nav" : ""}>
               <div className="icon-container">
                 <img src="/assets/courses-svgrepo-com.svg" alt="Courses icon" className="icon"/>
                 <span className="icon-text">Cursos</span>
@@ -35,7 +35,7 @@ export const NavBar = () => {
             </ExternalLink>
           </div>
           <div className="nav-icons">
-            <ExternalLink to="https://uxdevschool.com/nosotrospagina" className={({ isActive }) => isActive ? "active-nav" : ""}>
+            <ExternalLink to="https://uxdevschool.datacraftcoders.com/nosotrospagina" className={({ isActive }) => isActive ? "active-nav" : ""}>
               <div className="icon-container">
                 <img src="/assets/about-us-svgrepo-com.svg" alt="About icon" className="icon"/>
                 <span className="icon-text">Nosotros</span>
@@ -51,7 +51,7 @@ export const NavBar = () => {
             </NavLink>
           </div>
           <div className="nav-icons">
-            <ExternalLink to="https://foro.uxdevschool.com" className={({ isActive }) => isActive ? "active-nav" : ""}>
+            <ExternalLink to="https://forouxdev.datacraftcoders.com/" className={({ isActive }) => isActive ? "active-nav" : ""}>
               <div className="icon-container">
                 <img src="/assets/question-circle-svgrepo-com.svg" alt="Login icon" className="icon"/>
                 <span className="icon-text">Foro</span>
